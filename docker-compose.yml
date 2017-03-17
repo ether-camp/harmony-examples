@@ -1,0 +1,20 @@
+version: '2'
+services:
+
+  geth:
+    build: geth
+    image: geth
+    ports:
+      - "30303:30303"
+      - "8545:8545"
+    stdin_open: true
+    tty: true
+
+  harmony:
+    build: harmony
+    image: harmony
+    ports:
+      - "30304:30304"
+      - "8080:8080"
+    depends_on:
+      - geth
